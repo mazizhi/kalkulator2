@@ -3,67 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        #display {
-            width: 80%;
-            height: 50px;
-            font-size: 20px;
-            text-align: right;
-            margin-bottom: 10px;
-        }
-        .button {
-            width: 20%;
-            height: 50px;
-            font-size: 18px;
-            margin: 5px;
-        }
-    </style>
+    <title>CalcNote</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Kalkulator</h2>
-    <input type="text" id="display" readonly>
-    <br>
-    <button class="button" onclick="addToDisplay('1')">1</button>
-    <button class="button" onclick="addToDisplay('2')">2</button>
-    <button class="button" onclick="addToDisplay('3')">3</button>
-    <button class="button" onclick="addToDisplay('+')">+</button>
-    <br>
-    <button class="button" onclick="addToDisplay('4')">4</button>
-    <button class="button" onclick="addToDisplay('5')">5</button>
-    <button class="button" onclick="addToDisplay('6')">6</button>
-    <button class="button" onclick="addToDisplay('-')">-</button>
-    <br>
-    <button class="button" onclick="addToDisplay('7')">7</button>
-    <button class="button" onclick="addToDisplay('8')">8</button>
-    <button class="button" onclick="addToDisplay('9')">9</button>
-    <button class="button" onclick="addToDisplay('*')">×</button>
-    <br>
-    <button class="button" onclick="clearDisplay()">C</button>
-    <button class="button" onclick="addToDisplay('0')">0</button>
-    <button class="button" onclick="calculate()">=</button>
-    <button class="button" onclick="addToDisplay('/')">÷</button>
+    <div class="calc-container">
+        <div class="display">
+            <div class="input" id="input"></div>
+            <div class="result" id="result">Total: 0</div>
+        </div>
+        <div class="buttons">
+            <button class="btn" onclick="appendNumber('7')">7</button>
+            <button class="btn" onclick="appendNumber('8')">8</button>
+            <button class="btn" onclick="appendNumber('9')">9</button>
+            <button class="btn operator" onclick="appendOperator('*')">×</button>
+            <button class="btn delete" onclick="clearInput()">🗑️</button>
 
-    <script>
-        function addToDisplay(value) {
-            document.getElementById("display").value += value;
-        }
+            <button class="btn" onclick="appendNumber('4')">4</button>
+            <button class="btn" onclick="appendNumber('5')">5</button>
+            <button class="btn" onclick="appendNumber('6')">6</button>
+            <button class="btn operator" onclick="appendOperator('/')">÷</button>
+            <button class="btn" onclick="backspace()">⌫</button>
 
-        function calculate() {
-            try {
-                document.getElementById("display").value = eval(document.getElementById("display").value);
-            } catch {
-                document.getElementById("display").value = "Error";
-            }
-        }
+            <button class="btn" onclick="appendNumber('1')">1</button>
+            <button class="btn" onclick="appendNumber('2')">2</button>
+            <button class="btn" onclick="appendNumber('3')">3</button>
+            <button class="btn operator" onclick="appendOperator('-')">−</button>
+            <button class="btn operator" onclick="appendOperator(',')">,</button>
 
-        function clearDisplay() {
-            document.getElementById("display").value = "";
-        }
-    </script>
+            <button class="btn" onclick="appendNumber('0')">0</button>
+            <button class="btn" onclick="appendNumber('00')">00</button>
+            <button class="btn" onclick="appendNumber('000')">000</button>
+            <button class="btn operator" onclick="appendOperator('+')">+</button>
+            <button class="btn operator" onclick="calculate()">=</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
